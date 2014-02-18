@@ -5,6 +5,19 @@ var $document   = $(document),
     bindings    = {};
 
 var click = function(events) {
+    click.bind(events);
+};
+
+/*** Configuration Options ***/
+click.distanceLimit = 10;
+click.timeLimit     = 140;
+
+/*** Useful Properties ***/
+click.isTouch = ('ontouchstart' in window) ||
+                window.DocumentTouch && document instanceof DocumentTouch;
+
+/*** API ***/
+click.bind = function(events) {
     _.each(events, function(callback, selector) {
 
         /*** Register Binding ***/
@@ -46,15 +59,6 @@ var click = function(events) {
     });
 };
 
-/*** Configuration Options ***/
-click.distanceLimit = 10;
-click.timeLimit     = 140;
-
-/*** Useful Properties ***/
-click.isTouch = ('ontouchstart' in window) ||
-                window.DocumentTouch && document instanceof DocumentTouch;
-
-/*** API ***/
 click.unbind = function(selector) {
     $document
         .undelegate(selector, 'touchstart')
@@ -63,6 +67,17 @@ click.unbind = function(selector) {
     delete bindings[selector];
 
     return click;
+};
+
+click.trigger = function(selector, e) {
+    e = e || $.Event('click');
+
+    if(typeof bindings[selector] != 'undefined') {
+        bindings[selector](e);
+    }
+    else {
+        console.error("No click events bound for selector '"+selector+"'.");
+    }
 };
 
 /*** Internal (but useful) Methods ***/
