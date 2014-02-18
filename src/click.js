@@ -48,7 +48,7 @@ click.bind = function(events) {
                         //Find the correct callback
                         $.each(bindings, function(selector, callback) {
                             if($this.is(selector)) {
-                                callback(e);
+                                callback.apply(e.target, [e]);
                                 return false;
                             }
                         });
