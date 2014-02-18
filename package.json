@@ -5,7 +5,7 @@
     "author":       "Brian Peacock",
     "main":         "src/main.js",
     "dependencies": {
-        
+        "jquery": "2.1.0"
     },
     "devDependencies": {
         "browserify":   "3.24.x",
