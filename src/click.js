@@ -14,7 +14,8 @@ click.timeLimit     = 140;
 
 /*** Useful Properties ***/
 click.isTouch = ('ontouchstart' in window) ||
-                window.DocumentTouch && document instanceof DocumentTouch;
+                window.DocumentTouch &&
+                document instanceof DocumentTouch;
 
 /*** API ***/
 click.bind = function(events) {
@@ -55,7 +56,7 @@ click.bind = function(events) {
         }
 
         /*** Mouse Support ***/
-        $document.delegate('click', selector, callback);
+        $document.delegate(selector, 'click', callback);
     });
 };
 
