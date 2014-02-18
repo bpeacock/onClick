@@ -14,7 +14,7 @@ var getPos = function(e) {
     else {
         return {
             x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
-            y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop
+            y: e.clientY + document.body.scrollTop  + document.documentElement.scrollTop
         };
     }
 };
