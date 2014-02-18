@@ -1,5 +1,4 @@
-var $ = require('selector'),
-    _ = require('underscore');
+var $ = require('selector');
 
 var $document   = $(document),
     bindings    = {};
