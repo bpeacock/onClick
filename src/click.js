@@ -1,4 +1,4 @@
-var $ = require('jquery'),
+var $ = require('selector'),
     _ = require('underscore');
 
 var $document   = $(document),
@@ -19,7 +19,7 @@ click.isTouch = ('ontouchstart' in window) ||
 
 /*** API ***/
 click.bind = function(events) {
-    _.each(events, function(callback, selector) {
+    $.each(events, function(selector, callback) {
 
         /*** Register Binding ***/
         if(typeof bindings[selector] != 'undefined') {
@@ -47,9 +47,12 @@ click.bind = function(events) {
 
                     if(time < click.timeLimit && distance < click.distanceLimit) {
                         //Find the correct callback
-                        _.find(bindings, function(callback, selector) {
-                            if($this.is(selector)) return callback;
-                        })(e);
+                        $.each(bindings, function(selector, callback) {
+                            if($this.is(selector)) {
+                                callback(e);
+                                return false;
+                            }
+                        });
                     }
                 });
             });
