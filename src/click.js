@@ -1,0 +1,93 @@
+var $ = require('jquery'),
+    _ = require('underscore');
+
+var $document   = $(document),
+    bindings    = {};
+
+var click = function(events) {
+    _.each(events, function(callback, selector) {
+
+        /*** Register Binding ***/
+        if(typeof bindings[selector] != 'undefined') {
+            click.unbind(selector); //Ensure no duplicates
+        }
+        
+        bindings[selector] = callback;
+
+        /*** Touch Support ***/
+        if(click.isTouch) {
+            $document.delegate(selector, 'touchstart', function(e) {
+                var $this       = $(this),
+                    startTime   = new Date().getTime(),
+                    startPos    = click._getPos(e);
+
+                $this.one('touchend', function(e) {
+                    e.preventDefault(); //Prevents click event from firing
+                    
+                    var time        = new Date().getTime() - startTime,
+                        endPos      = click._getPos(e),
+                        distance    = Math.sqrt(
+                            Math.pow(endPos.x - startPos.x, 2) +
+                            Math.pow(endPos.y - startPos.y, 2)
+                        );
+
+                    if(time < click.timeLimit && distance < click.distanceLimit) {
+                        //Find the correct callback
+                        _.find(bindings, function(callback, selector) {
+                            if($this.is(selector)) return callback;
+                        })(e);
+                    }
+                });
+            });
+        }
+
+        /*** Mouse Support ***/
+        $document.delegate('click', selector, callback);
+    });
+};
+
+/*** Configuration Options ***/
+click.distanceLimit = 10;
+click.timeLimit     = 140;
+
+/*** Useful Properties ***/
+click.isTouch = ('ontouchstart' in window) ||
+                window.DocumentTouch && document instanceof DocumentTouch;
+
+/*** API ***/
+click.unbind = function(selector) {
+    $document
+        .undelegate(selector, 'touchstart')
+        .undelegate(selector, 'click');
+
+    delete bindings[selector];
+
+    return click;
+};
+
+/*** Internal (but useful) Methods ***/
+click._getPos = function(e) {
+    e = e.originalEvent;
+
+    if (e.pageX || e.pageY) {
+        return {
+            x: e.pageX,
+            y: e.pageY
+        };
+    }
+    else if(e.changedTouches) {
+        return {
+            x: e.changedTouches[0].clientX,
+            y: e.changedTouches[0].clientY
+        };
+    }
+    else {
+        return {
+            x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
+            y: e.clientY + document.body.scrollTop  + document.documentElement.scrollTop
+        };
+    }
+};
+
+module.exports = click;
+
