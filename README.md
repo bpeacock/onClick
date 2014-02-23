@@ -25,6 +25,8 @@ onClick({
 })
 ```
 
+[example](http://htmlpreview.github.io/?https://github.com/bpeacock/onClick/blob/master/examples/index.html)
+
 Development
 -----------
 
