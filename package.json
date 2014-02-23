@@ -1,9 +1,9 @@
 {
   "name": "onClick",
-  "description": "",
+  "description": "A click controller for mouse & touch.",
   "version": "0.0.1",
   "author": "Brian Peacock",
-  "main": "src/click.js",
+  "main": "src/onClick.js",
   "dependencies": {
     "unopinionate": "0.0.x"
   },

@@ -108,10 +108,7 @@ test("Standard Click Event (Browser w/ Mouse)", function() {
     ok(testCallback.called);
 });
 
-
-
-
-
+/*** Touch Tests ***/
 var $button,
     eStart,
     eEnd;

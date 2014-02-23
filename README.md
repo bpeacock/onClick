@@ -1,17 +1,29 @@
-To Install:
+onClick.js
+==========
+
+A click controller for mouse & touch.
+
+Installation:
 -----------
 
 ```bash
 npm install
 ```
 
-Unbundled Dependencies:
------------------------
-
 A jQuery-like selector library is required:
 - jQuery 1.4.3+
 - Zepto
 
+Usage
+-----
+
+```javascript
+onClick({
+    '#element': function(e) {
+        alert("I was clicked!");
+    }
+})
+```
 
 Development
 -----------
