@@ -4500,15 +4500,6 @@ test("#unbindAll", function() {
     ok(!testCallback.called);
 });
 
-test("Standard Click Event (Browser w/ Mouse)", function() {
-    click({
-        '#button': testCallback
-    });
-
-    $('#button').click();
-    ok(testCallback.called);
-});
-
 test("#bind object syntax", function() {
     click
         .bind({
@@ -4575,6 +4566,15 @@ test("#_getPos", function() {
     deepEqual(pos.y, 200, "y Position (changedTouches)");
 });
 
+test("Standard Click Event (Browser w/ Mouse)", function() {
+    click({
+        '#button': testCallback
+    });
+
+    $('#button').click();
+    ok(testCallback.called);
+});
+
 
 
 
@@ -4626,8 +4626,8 @@ asyncTest("Successful Touch Click", function() {
 
 asyncTest("Distance Fail", function() {
     eEnd.originalEvent = {
-        pageX: 10,
-        pageY: 10
+        pageX: click.distanceLimit,
+        pageY: click.distanceLimit
     };
 
     $button.trigger(eStart);
@@ -4640,26 +4640,16 @@ asyncTest("Distance Fail", function() {
 });
 
 asyncTest("Timeout Fail", function() {
-    eEnd.originalEvent = {
-        pageX: 10,
-        pageY: 10
-    };
-
     $button.trigger(eStart);
 
     setTimeout(function() {
         $button.trigger(eEnd);
         ok(!testCallback.called, "Distance Fail");
         start();
-    }, 1000);
+    }, click.timeLimit + 1);
 });
 
 asyncTest("Different Element Fail", function() {
-    eEnd.originalEvent = {
-        pageX: 10,
-        pageY: 10
-    };
-
     $button.trigger(eStart);
 
     setTimeout(function() {
