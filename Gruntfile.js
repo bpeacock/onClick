@@ -13,6 +13,9 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'dist/onClick.min.js': ['dist/onClick.js']
+                },
+                options: {
+                    sourceMap: true
                 }
             }
         },
