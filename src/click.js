@@ -16,6 +16,34 @@ click.isTouch = ('ontouchstart' in window) ||
                 window.DocumentTouch &&
                 document instanceof DocumentTouch;
 
+/*** Cached Functions ***/
+var onTouchstart = function(e) {
+    var $this       = $(this),
+        startTime   = new Date().getTime(),
+        startPos    = click._getPos(e);
+
+    $this.one('touchend', function(e) {
+        e.preventDefault(); //Prevents click event from firing
+        
+        var time        = new Date().getTime() - startTime,
+            endPos      = click._getPos(e),
+            distance    = Math.sqrt(
+                Math.pow(endPos.x - startPos.x, 2) +
+                Math.pow(endPos.y - startPos.y, 2)
+            );
+
+        if(time < click.timeLimit && distance < click.distanceLimit) {
+            //Find the correct callback
+            $.each(bindings, function(selector, callback) {
+                if($this.is(selector)) {
+                    callback.apply(e.target, [e]);
+                    return false;
+                }
+            });
+        }
+    });
+};
+
 /*** API ***/
 click.bind = function(events) {
     $.each(events, function(selector, callback) {
@@ -29,32 +57,7 @@ click.bind = function(events) {
 
         /*** Touch Support ***/
         if(click.isTouch) {
-            $document.delegate(selector, 'touchstart', function(e) {
-                var $this       = $(this),
-                    startTime   = new Date().getTime(),
-                    startPos    = click._getPos(e);
-
-                $this.one('touchend', function(e) {
-                    e.preventDefault(); //Prevents click event from firing
-                    
-                    var time        = new Date().getTime() - startTime,
-                        endPos      = click._getPos(e),
-                        distance    = Math.sqrt(
-                            Math.pow(endPos.x - startPos.x, 2) +
-                            Math.pow(endPos.y - startPos.y, 2)
-                        );
-
-                    if(time < click.timeLimit && distance < click.distanceLimit) {
-                        //Find the correct callback
-                        $.each(bindings, function(selector, callback) {
-                            if($this.is(selector)) {
-                                callback.apply(e.target, [e]);
-                                return false;
-                            }
-                        });
-                    }
-                });
-            });
+            $document.delegate(selector, 'touchstart', onTouchstart);
         }
 
         /*** Mouse Support ***/
