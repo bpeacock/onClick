@@ -19,7 +19,7 @@ Development
 To Build:
 
 ```bash
-grunt browserify
+grunt build
 ```
 
 To Develop:
@@ -30,8 +30,7 @@ grunt watch
 
 To Test:
  
- ```bash
- npm install -g mocha
- mocha
- ```
+```bash
+npm test
+```
  
