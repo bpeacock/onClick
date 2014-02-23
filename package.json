@@ -5,8 +5,8 @@
   "author": "Brian Peacock",
   "main": "src/onClick.js",
   "repository": {
-    "type" : "git",
-    "url" :  "https://github.com/bpeacock/onClick"
+    "type": "git",
+    "url": "https://github.com/bpeacock/onClick"
   },
   "dependencies": {
     "unopinionate": "0.0.x"
@@ -19,7 +19,8 @@
     "sinon": "~1.8.2",
     "jQuery": "~1.7.4",
     "grunt-contrib-qunit": "~0.4.0",
-    "qunitjs": "~1.14.0"
+    "qunitjs": "~1.14.0",
+    "grunt-contrib-uglify": "~0.3.2"
   },
   "scripts": {
     "test": "grunt test"

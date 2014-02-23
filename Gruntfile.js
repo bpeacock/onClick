@@ -9,6 +9,13 @@ module.exports = function(grunt) {
                 standalone: 'onClick'
             }
         },
+        uglify: {
+            dist: {
+                files: {
+                    'dist/onClick.min.js': ['dist/onClick.js']
+                }
+            }
+        },
         watch: {
             files: [ "src/*.js", "examples/example.js", "test/test.js"],
             tasks: [ 'browserify' ]
@@ -21,6 +28,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('test', [
         'qunit'
@@ -28,6 +36,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'test',
-        'browserify'
+        'browserify',
+        'uglify'
     ]);
 };
