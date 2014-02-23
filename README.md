@@ -1,5 +1,5 @@
-onClick.js
-==========
+onClick.js [![Build Status](https://travis-ci.org/bpeacock/onClick.png?branch=master)](https://travis-ci.org/bpeacock/onClick)
+===============
 
 A click controller for mouse & touch.
 
