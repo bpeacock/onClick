@@ -1,4 +1,4 @@
-var click = require("../src/click.js");
+var click = require("../src/onClick.js");
 
 click({
     '#element': function(e) {
