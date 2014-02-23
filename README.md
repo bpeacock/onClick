@@ -7,7 +7,7 @@ Installation:
 -----------
 
 ```bash
-npm install
+npm install onclick
 ```
 
 A jQuery-like selector library is required:

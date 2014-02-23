@@ -1,9 +1,13 @@
 {
-  "name": "onClick",
+  "name": "onclick",
   "description": "A click controller for mouse & touch.",
   "version": "0.0.1",
   "author": "Brian Peacock",
   "main": "src/onClick.js",
+  "repository": {
+    "type" : "git",
+    "url" :  "https://github.com/bpeacock/onClick"
+  },
   "dependencies": {
     "unopinionate": "0.0.x"
   },
