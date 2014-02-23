@@ -5,6 +5,7 @@ var $document   = $(document),
 
 var click = function(events) {
     click.bind(events);
+    return click;
 };
 
 /*** Configuration Options ***/
@@ -46,6 +47,14 @@ var onTouchstart = function(e) {
 
 /*** API ***/
 click.bind = function(events) {
+
+    //Argument Surgery
+    if(!$.isPlainObject(events)) {
+        newEvents = {};
+        newEvents[arguments[0]] = arguments[1];
+        events = newEvents;
+    }
+
     $.each(events, function(selector, callback) {
 
         /*** Register Binding ***/
@@ -63,6 +72,8 @@ click.bind = function(events) {
         /*** Mouse Support ***/
         $document.delegate(selector, 'click', callback);
     });
+
+    return this;
 };
 
 click.unbind = function(selector) {
@@ -72,7 +83,19 @@ click.unbind = function(selector) {
 
     delete bindings[selector];
 
-    return click;
+    return this;
+};
+
+click.unbindAll = function() {
+    $.each(bindings, function(selector, callback) {
+        $document
+            .undelegate(selector, 'touchstart')
+            .undelegate(selector, 'click');
+    });
+    
+    bindings = {};
+
+    return this;
 };
 
 click.trigger = function(selector, e) {
@@ -84,13 +107,15 @@ click.trigger = function(selector, e) {
     else {
         console.error("No click events bound for selector '"+selector+"'.");
     }
+
+    return this;
 };
 
 /*** Internal (but useful) Methods ***/
 click._getPos = function(e) {
     e = e.originalEvent;
 
-    if (e.pageX || e.pageY) {
+    if(e.pageX || e.pageY) {
         return {
             x: e.pageX,
             y: e.pageY
