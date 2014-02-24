@@ -1,5 +1,5 @@
 var sinon = require('sinon'),
-    click = window.onClick,
+    click = require('../src/onClick'),
     module = window.module,
     sandbox,
     testCallback;
