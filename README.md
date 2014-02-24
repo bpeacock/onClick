@@ -3,8 +3,8 @@ onClick.js [![Build Status](https://travis-ci.org/bpeacock/onClick.png?branch=ma
 
 A click controller for mouse & touch.
 
-Installation:
------------
+Installation
+------------
 
 ```bash
 npm install onclick
