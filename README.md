@@ -22,7 +22,7 @@ onClick({
     '#element': function(e) {
         alert("I was clicked!");
     }
-})
+});
 ```
 
 Check out a live [example](http://htmlpreview.github.io/?https://github.com/bpeacock/onClick/blob/master/examples/index.html).
