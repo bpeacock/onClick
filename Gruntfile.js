@@ -2,11 +2,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         browserify: {
-            'dist/onClick.js':      ['src/onClick.js'],
-            'examples/build.js':    ['examples/example.js'],
-            'test/build.js':        ['test/test.js'],
-            options: {
-                standalone: 'onClick'
+            dist: {
+                'dist/onClick.js':      ['src/onClick.js'],
+                'examples/build.js':    ['examples/example.js'],
+                options: {
+                    standalone: 'onClick'
+                }
+            },
+            test: {
+                'test/build.js':        ['test/test.js']
             }
         },
         uglify: {
@@ -21,7 +25,7 @@ module.exports = function(grunt) {
         },
         watch: {
             files: [ "src/*.js", "examples/example.js", "test/test.js"],
-            tasks: [ 'browserify' ]
+            tasks: [ 'browserify:dist' ]
         },
         qunit: {
             files: ['test/index.html']
@@ -40,13 +44,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.registerTask('test', [
+        'browserify:test',
         'qunit',
         'jshint'
     ]);
 
     grunt.registerTask('build', [
         'test',
-        'browserify',
+        'browserify:dist',
         'uglify'
     ]);
 };
