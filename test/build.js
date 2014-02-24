@@ -1,4 +1,4 @@
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.onClick=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -23,7 +23,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],2:[function(_dereq_,module,exports){
+},{}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -78,14 +78,14 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],3:[function(_dereq_,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],4:[function(_dereq_,module,exports){
+},{}],4:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -612,7 +612,7 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = _dereq_('./support/isBuffer');
+exports.isBuffer = require('./support/isBuffer');
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
@@ -656,7 +656,7 @@ exports.log = function() {
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
  */
-exports.inherits = _dereq_('inherits');
+exports.inherits = require('inherits');
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
@@ -674,8 +674,8 @@ function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-}).call(this,_dereq_("/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":3,"/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2,"inherits":1}],5:[function(_dereq_,module,exports){
+}).call(this,require("/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./support/isBuffer":3,"/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2,"inherits":1}],5:[function(require,module,exports){
 /*jslint eqeqeq: false, onevar: false, forin: true, nomen: false, regexp: false, plusplus: false*/
 /*global module, require, __dirname, document*/
 /**
@@ -1008,21 +1008,21 @@ var sinon = (function (formatio) {
         });
     } else if (isNode) {
         try {
-            formatio = _dereq_("formatio");
+            formatio = require("formatio");
         } catch (e) {}
         module.exports = sinon;
-        module.exports.spy = _dereq_("./sinon/spy");
-        module.exports.spyCall = _dereq_("./sinon/call");
-        module.exports.behavior = _dereq_("./sinon/behavior");
-        module.exports.stub = _dereq_("./sinon/stub");
-        module.exports.mock = _dereq_("./sinon/mock");
-        module.exports.collection = _dereq_("./sinon/collection");
-        module.exports.assert = _dereq_("./sinon/assert");
-        module.exports.sandbox = _dereq_("./sinon/sandbox");
-        module.exports.test = _dereq_("./sinon/test");
-        module.exports.testCase = _dereq_("./sinon/test_case");
-        module.exports.assert = _dereq_("./sinon/assert");
-        module.exports.match = _dereq_("./sinon/match");
+        module.exports.spy = require("./sinon/spy");
+        module.exports.spyCall = require("./sinon/call");
+        module.exports.behavior = require("./sinon/behavior");
+        module.exports.stub = require("./sinon/stub");
+        module.exports.mock = require("./sinon/mock");
+        module.exports.collection = require("./sinon/collection");
+        module.exports.assert = require("./sinon/assert");
+        module.exports.sandbox = require("./sinon/sandbox");
+        module.exports.test = require("./sinon/test");
+        module.exports.testCase = require("./sinon/test_case");
+        module.exports.assert = require("./sinon/assert");
+        module.exports.match = require("./sinon/match");
     }
 
     if (formatio) {
@@ -1032,7 +1032,7 @@ var sinon = (function (formatio) {
         };
     } else if (isNode) {
         try {
-            var util = _dereq_("util");
+            var util = require("util");
             sinon.format = function (value) {
                 return typeof value == "object" && value.toString === Object.prototype.toString ? util.inspect(value) : value;
             };
@@ -1045,7 +1045,7 @@ var sinon = (function (formatio) {
     return sinon;
 }(typeof formatio == "object" && formatio));
 
-},{"./sinon/assert":6,"./sinon/behavior":7,"./sinon/call":8,"./sinon/collection":9,"./sinon/match":10,"./sinon/mock":11,"./sinon/sandbox":12,"./sinon/spy":13,"./sinon/stub":14,"./sinon/test":15,"./sinon/test_case":16,"formatio":18,"util":4}],6:[function(_dereq_,module,exports){
+},{"./sinon/assert":6,"./sinon/behavior":7,"./sinon/call":8,"./sinon/collection":9,"./sinon/match":10,"./sinon/mock":11,"./sinon/sandbox":12,"./sinon/spy":13,"./sinon/stub":14,"./sinon/test":15,"./sinon/test_case":16,"formatio":18,"util":4}],6:[function(require,module,exports){
 (function (global){
 /**
  * @depend ../sinon.js
@@ -1069,7 +1069,7 @@ var sinon = (function (formatio) {
     var assert;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -1232,7 +1232,7 @@ var sinon = (function (formatio) {
 }(typeof sinon == "object" && sinon || null, typeof window != "undefined" ? window : (typeof self != "undefined") ? self : global));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../sinon":5}],7:[function(_dereq_,module,exports){
+},{"../sinon":5}],7:[function(require,module,exports){
 (function (process){
 /**
  * @depend ../sinon.js
@@ -1254,7 +1254,7 @@ var sinon = (function (formatio) {
     var commonJSModule = typeof module !== 'undefined' && module.exports;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -1566,8 +1566,8 @@ var sinon = (function (formatio) {
         sinon.behavior = proto;
     }
 }(typeof sinon == "object" && sinon || null));
-}).call(this,_dereq_("/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"../sinon":5,"/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2}],8:[function(_dereq_,module,exports){
+}).call(this,require("/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
+},{"../sinon":5,"/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2}],8:[function(require,module,exports){
 /**
   * @depend ../sinon.js
   * @depend match.js
@@ -1589,7 +1589,7 @@ var sinon = (function (formatio) {
 (function (sinon) {
     var commonJSModule = typeof module !== 'undefined' && module.exports;
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -1772,7 +1772,7 @@ var sinon = (function (formatio) {
 }(typeof sinon == "object" && sinon || null));
 
 
-},{"../sinon":5}],9:[function(_dereq_,module,exports){
+},{"../sinon":5}],9:[function(require,module,exports){
 /**
  * @depend ../sinon.js
  * @depend stub.js
@@ -1796,7 +1796,7 @@ var sinon = (function (formatio) {
     var hasOwnProperty = Object.prototype.hasOwnProperty;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -1927,7 +1927,7 @@ var sinon = (function (formatio) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5}],10:[function(_dereq_,module,exports){
+},{"../sinon":5}],10:[function(require,module,exports){
 /* @depend ../sinon.js */
 /*jslint eqeqeq: false, onevar: false, plusplus: false*/
 /*global module, require, sinon*/
@@ -1945,7 +1945,7 @@ var sinon = (function (formatio) {
     var commonJSModule = typeof module !== 'undefined' && module.exports;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -2168,7 +2168,7 @@ var sinon = (function (formatio) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5}],11:[function(_dereq_,module,exports){
+},{"../sinon":5}],11:[function(require,module,exports){
 /**
  * @depend ../sinon.js
  * @depend stub.js
@@ -2191,7 +2191,7 @@ var sinon = (function (formatio) {
     var match;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -2201,7 +2201,7 @@ var sinon = (function (formatio) {
     match = sinon.match;
 
     if (!match && commonJSModule) {
-        match = _dereq_("./match");
+        match = require("./match");
     }
 
     function mock(object) {
@@ -2619,7 +2619,7 @@ var sinon = (function (formatio) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5,"./match":10}],12:[function(_dereq_,module,exports){
+},{"../sinon":5,"./match":10}],12:[function(require,module,exports){
 /**
  * @depend ../sinon.js
  * @depend collection.js
@@ -2640,8 +2640,8 @@ var sinon = (function (formatio) {
 "use strict";
 
 if (typeof module !== 'undefined' && module.exports) {
-    var sinon = _dereq_("../sinon");
-    sinon.extend(sinon, _dereq_("./util/fake_timers"));
+    var sinon = require("../sinon");
+    sinon.extend(sinon, require("./util/fake_timers"));
 }
 
 (function () {
@@ -2746,7 +2746,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 }());
 
-},{"../sinon":5,"./util/fake_timers":17}],13:[function(_dereq_,module,exports){
+},{"../sinon":5,"./util/fake_timers":17}],13:[function(require,module,exports){
 /**
   * @depend ../sinon.js
   * @depend call.js
@@ -2770,7 +2770,7 @@ if (typeof module !== 'undefined' && module.exports) {
     var callId = 0;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -3155,7 +3155,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5}],14:[function(_dereq_,module,exports){
+},{"../sinon":5}],14:[function(require,module,exports){
 /**
  * @depend ../sinon.js
  * @depend spy.js
@@ -3177,7 +3177,7 @@ if (typeof module !== 'undefined' && module.exports) {
     var commonJSModule = typeof module !== 'undefined' && module.exports;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -3316,7 +3316,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5}],15:[function(_dereq_,module,exports){
+},{"../sinon":5}],15:[function(require,module,exports){
 /**
  * @depend ../sinon.js
  * @depend stub.js
@@ -3339,7 +3339,7 @@ if (typeof module !== 'undefined' && module.exports) {
     var commonJSModule = typeof module !== 'undefined' && module.exports;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon) {
@@ -3393,7 +3393,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5}],16:[function(_dereq_,module,exports){
+},{"../sinon":5}],16:[function(require,module,exports){
 /**
  * @depend ../sinon.js
  * @depend test.js
@@ -3414,7 +3414,7 @@ if (typeof module !== 'undefined' && module.exports) {
     var commonJSModule = typeof module !== 'undefined' && module.exports;
 
     if (!sinon && commonJSModule) {
-        sinon = _dereq_("../sinon");
+        sinon = require("../sinon");
     }
 
     if (!sinon || !Object.prototype.hasOwnProperty) {
@@ -3492,7 +3492,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }
 }(typeof sinon == "object" && sinon || null));
 
-},{"../sinon":5}],17:[function(_dereq_,module,exports){
+},{"../sinon":5}],17:[function(require,module,exports){
 (function (global){
 /*jslint eqeqeq: false, plusplus: false, evil: true, onevar: false, browser: true, forin: false*/
 /*global module, require, window*/
@@ -3881,12 +3881,12 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],18:[function(_dereq_,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 ((typeof define === "function" && define.amd && function (m) {
     define("formatio", ["samsam"], m);
 }) || (typeof module === "object" && function (m) {
-    module.exports = m(_dereq_("samsam"));
+    module.exports = m(require("samsam"));
 }) || function (m) { this.formatio = m(this.samsam); }
 )(function (samsam) {
     "use strict";
@@ -4084,7 +4084,7 @@ if (typeof module !== 'undefined' && module.exports) {
 });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"samsam":19}],19:[function(_dereq_,module,exports){
+},{"samsam":19}],19:[function(require,module,exports){
 ((typeof define === "function" && define.amd && function (m) { define("samsam", m); }) ||
  (typeof module === "object" &&
       function (m) { module.exports = m(); }) || // Node
@@ -4464,7 +4464,7 @@ if (typeof module !== 'undefined' && module.exports) {
     };
 });
 
-},{}],20:[function(_dereq_,module,exports){
+},{}],20:[function(require,module,exports){
 (function (global){
 (function(root) {
     var unopinionate = {
@@ -4491,8 +4491,8 @@ if (typeof module !== 'undefined' && module.exports) {
 })(typeof window != 'undefined' ? window : global);
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],21:[function(_dereq_,module,exports){
-var $ = _dereq_('unopinionate').selector;
+},{}],21:[function(require,module,exports){
+var $ = require('unopinionate').selector;
 
 var $document   = $(document),
     bindings    = {};
@@ -4632,9 +4632,9 @@ click._getPos = function(e) {
 module.exports = click;
 
 
-},{"unopinionate":20}],22:[function(_dereq_,module,exports){
-var sinon = _dereq_('sinon'),
-    click = _dereq_('../src/onClick'),
+},{"unopinionate":20}],22:[function(require,module,exports){
+var sinon = require('sinon'),
+    click = require('../src/onClick'),
     module = window.module,
     sandbox,
     testCallback;
@@ -4826,5 +4826,3 @@ asyncTest("Different Element Fail", function() {
 
 
 },{"../src/onClick":21,"sinon":5}]},{},[22])
-(22)
-});

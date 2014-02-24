@@ -3,14 +3,18 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         browserify: {
             dist: {
-                'dist/onClick.js':      ['src/onClick.js'],
-                'examples/build.js':    ['examples/example.js'],
+                files: {
+                    'dist/onClick.js':      ['src/onClick.js'],
+                    'examples/build.js':    ['examples/example.js']
+                },
                 options: {
                     standalone: 'onClick'
                 }
             },
             test: {
-                'test/build.js':        ['test/test.js']
+                files: {
+                    'test/build.js':        ['test/test.js']
+                }
             }
         },
         uglify: {
