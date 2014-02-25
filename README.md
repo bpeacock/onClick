@@ -3,6 +3,11 @@ onClick.js [![Build Status](https://travis-ci.org/bpeacock/onClick.png?branch=ma
 
 A click controller for mouse & touch.
 
+- Prevents 300ms delay on touch
+- Touch interactions like scrolling work as expected
+- Handles devices that have both touch and mouse
+- Delegates events for efficiency
+
 Installation
 ------------
 
