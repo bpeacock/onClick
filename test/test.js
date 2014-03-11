@@ -108,6 +108,13 @@ test("Standard Click Event (Browser w/ Mouse)", function() {
     ok(testCallback.called);
 });
 
+test("Two arguments (not object configuration)", function() {
+    click('#button', testCallback);
+
+    $('#button').click();
+    ok(testCallback.called);
+});
+
 /*** Touch Tests ***/
 var $button,
     eStart,

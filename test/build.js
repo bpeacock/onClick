@@ -674,8 +674,8 @@ function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-}).call(this,require("/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":3,"/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2,"inherits":1}],5:[function(require,module,exports){
+}).call(this,require("/Users/brianpeacock/apps/on3/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./support/isBuffer":3,"/Users/brianpeacock/apps/on3/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2,"inherits":1}],5:[function(require,module,exports){
 /*jslint eqeqeq: false, onevar: false, forin: true, nomen: false, regexp: false, plusplus: false*/
 /*global module, require, __dirname, document*/
 /**
@@ -1566,8 +1566,8 @@ var sinon = (function (formatio) {
         sinon.behavior = proto;
     }
 }(typeof sinon == "object" && sinon || null));
-}).call(this,require("/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"../sinon":5,"/Users/brianpeacock/apps/controllers/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2}],8:[function(require,module,exports){
+}).call(this,require("/Users/brianpeacock/apps/on3/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
+},{"../sinon":5,"/Users/brianpeacock/apps/on3/onClick/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":2}],8:[function(require,module,exports){
 /**
   * @depend ../sinon.js
   * @depend match.js
@@ -4498,7 +4498,7 @@ var $document   = $(document),
     bindings    = {};
 
 var click = function(events) {
-    click.bind(events);
+    click.bind.apply(click, arguments);
     return click;
 };
 
@@ -4738,6 +4738,13 @@ test("Standard Click Event (Browser w/ Mouse)", function() {
     click({
         '#button': testCallback
     });
+
+    $('#button').click();
+    ok(testCallback.called);
+});
+
+test("Two arguments (not object configuration)", function() {
+    click('#button', testCallback);
 
     $('#button').click();
     ok(testCallback.called);

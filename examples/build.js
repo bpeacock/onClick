@@ -7,6 +7,9 @@ click({
     }
 });
 
+click('.elementSet', function(e) {
+    alert("You clicked the set");
+});
 
 },{"../src/onClick.js":3}],2:[function(_dereq_,module,exports){
 (function (global){
@@ -42,7 +45,7 @@ var $document   = $(document),
     bindings    = {};
 
 var click = function(events) {
-    click.bind(events);
+    click.bind.apply(click, arguments);
     return click;
 };
 

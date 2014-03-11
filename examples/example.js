@@ -6,3 +6,6 @@ click({
     }
 });
 
+click('.elementSet', function(e) {
+    alert("You clicked the set");
+});

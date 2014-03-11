@@ -32,7 +32,7 @@ var $document   = $(document),
     bindings    = {};
 
 var click = function(events) {
-    click.bind(events);
+    click.bind.apply(click, arguments);
     return click;
 };
 
