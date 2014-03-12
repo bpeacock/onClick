@@ -1,7 +1,7 @@
 {
   "name": "onclick",
   "description": "A click controller for mouse & touch.",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "author": "Brian Peacock",
   "main": "src/onClick.js",
   "repository": {
