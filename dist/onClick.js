@@ -47,6 +47,8 @@ click.isTouch = ('ontouchstart' in window) ||
 
 /*** Cached Functions ***/
 var onTouchstart = function(e) {
+    e.stopPropagation(); //Prevents multiple click events from happening
+
     var $this       = $(this),
         startTime   = new Date().getTime(),
         startPos    = click._getPos(e);
@@ -98,7 +100,10 @@ click.bind = function(events) {
         }
 
         /*** Mouse Support ***/
-        $document.delegate(selector, 'click', callback);
+        $document.delegate(selector, 'click', function(e) {
+            e.stopPropagation(); //Prevents multiple click events from happening
+            callback.apply(this, [e]);
+        });
     });
 
     return this;
