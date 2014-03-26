@@ -21,6 +21,8 @@ click.isTouch = ('ontouchstart' in window) ||
 var onTouchstart = function(e) {
     e.stopPropagation(); //Prevents multiple click events from happening
 
+    click._doAnywheres(e);
+
     var $this       = $(this),
         startTime   = new Date().getTime(),
         startPos    = click._getPos(e);
@@ -74,6 +76,7 @@ click.bind = function(events) {
         /*** Mouse Support ***/
         $document.delegate(selector, 'click', function(e) {
             e.stopPropagation(); //Prevents multiple click events from happening
+            //click._doAnywheres(e); //Do anywheres first to be consistent with touch order
             callback.apply(this, [e]);
         });
     });
@@ -116,6 +119,11 @@ click.trigger = function(selector, e) {
     return this;
 };
 
+click.anywhere = function(callback) {
+    click._anywheres.push(callback);
+    return this;
+};
+
 /*** Internal (but useful) Methods ***/
 click._getPos = function(e) {
     e = e.originalEvent;
@@ -139,6 +147,17 @@ click._getPos = function(e) {
         };
     }
 };
+
+click._anywheres = [];
+
+click._doAnywheres = function(e) {
+    var i = click._anywheres.length;
+    while(i--) {
+        click._anywheres[i](e);
+    }
+};
+
+$(document).bind('mousedown', click._doAnywheres);
 
 module.exports = click;
 
